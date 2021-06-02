@@ -22,7 +22,9 @@ public class UserController {
     }
     @RequestMapping(value ="/join" ,method = RequestMethod.POST)
     public String join(UserEntity param){
+        service.join(param);
         System.out.println("param"+param);
+
         return "redirect:/user/login";
     }
 }

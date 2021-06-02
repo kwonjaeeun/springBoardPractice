@@ -1,12 +1,15 @@
 package com.koreait.spring.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
-    public int join(UserEntity param){
+    @Autowired
+    private UserMapper mapper;
 
-        return 0;
+    public int join(UserEntity param){
+        return mapper.insUser(param);
     }
 }

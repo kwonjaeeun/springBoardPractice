@@ -4,4 +4,14 @@
 
 <mapper namespace="com.koreait.spring.user.UserMapper">
 
+    <insert id="insUser">
+        INSERT  into t_user
+        ( uid , upw , unm , gender)
+        values
+        (
+         #{uid} , #{upw} , #{unm} , #{gender}
+        )
+
+    </insert>
+
 </mapper>
