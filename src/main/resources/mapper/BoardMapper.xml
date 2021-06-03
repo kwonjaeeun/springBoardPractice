@@ -3,5 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.koreait.spring.board.BoardMapper">
-
+    <select id="selBoardList" resultType="BoardDomain">
+        SELECT A.iboard, A.title, B.unm as writerNm, A.regdt, A.iuser,B.profileImg
+        from t_board A inner join t_user B on A.iuser = B.iuser
+        order by A.iboard desc
+    </select>
 </mapper>
