@@ -14,4 +14,12 @@
 
     </insert>
 
+    <select id="selUser" resultType="UserEntity">
+        SELECT * from t_user
+        where  uid=#{uid}
+    </select>
+
+
+
+
 </mapper>
