@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>List</title>
+    <title>Listss</title>
 </head>
 <body>
 <h1>리스트</h1>
