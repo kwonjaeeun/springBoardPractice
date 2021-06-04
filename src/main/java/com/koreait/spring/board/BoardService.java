@@ -14,4 +14,8 @@ public class BoardService {
     public  List<BoardDomain> selBoardlist(){
        return mapper.selBoardList();
     }
+
+    public BoardDomain selBoard(BoardEntity param) {
+        return mapper.selBoard(param);
+    }
 }

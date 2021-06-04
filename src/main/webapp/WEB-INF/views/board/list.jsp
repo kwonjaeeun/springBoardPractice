@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>List</title>
+    <link rel="stylesheet" href="/res/css/common.css">
+    <link rel="stylesheet" href="/res/css/boardList.css">
+    <script defer src="/res/js/boardList.js"></script>
 </head>
 <body>
 <h1>리스트</h1>
+<div>${sessionScope.loginUser.unm}</div>
 <table>
     <tr>
         <th>번호</th>
@@ -26,6 +30,17 @@
                         ${item.title}
                     </c:otherwise>
                 </c:choose>
+            </td>
+            <td>
+            <c:choose>
+                <c:when test="${empty item.profileImg}">
+                    <c:set var="img" value="/res/img/noprofile.jpg"/>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="img" value="/res/img/user/${item.iuser}/${item.profileImg}"/>
+                </c:otherwise>
+            </c:choose>
+                <img src="${img}" class="profileImg">
             </td>
             <td>
                 <c:choose>
