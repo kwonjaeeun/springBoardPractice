@@ -9,10 +9,10 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BoardCmtEntity {
-    private int icmt;
+    private int ict;
     private int iboard;
     private int iuser;
-    private String cmt;
-    private String regdate;
+    private String ctnt;
+    private String regdt;
 
 }

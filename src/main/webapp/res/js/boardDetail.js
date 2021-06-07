@@ -3,10 +3,10 @@ var cmtListElem = document.querySelector('#cmtList');
 var cmtModModalElem = document.querySelector('#modal');
 
 function regCmt() {
-	var cmtVal = cmtFrmElem.cmt.value;	
+	var ctntVal = cmtFrmElem.ctnt.value;
 	var param = {
 		iboard: cmtListElem.dataset.iboard,
-		cmt: cmtVal
+		ctnt: ctntVal
 	};	
 	regAjax(param);
 }
@@ -15,23 +15,25 @@ function regCmt() {
 function regAjax(param) {
 	const init = {
 		method: 'POST',				
-	    body: JSON.stringify(param)
+	    body: JSON.stringify(param),
+		headers:{
+			'accept' : 'application/json',
+			'content-type' : 'application/json;charset=UTF-8'
+		}
+
 	};
 	
-	fetch('cmtInsSel', init)
+	fetch('cmtIns', init)
 	.then(function(res) {
 		return res.json();
 	})
 	.then(function(myJson) {
-		console.log(myJson.result);
-
 		switch(myJson.result) {
 			case 0:
 				alert('등록 실패!');
 			break;
 			case 1:
-				cmtFrmElem.cmt.value = '';
-
+				cmtFrmElem.ctnt.value = '';
 				getListAjax();
 			break;
 		}
@@ -41,14 +43,13 @@ function regAjax(param) {
 //서버에게 댓글 리스트 자료 달라고 요청하는 함수
 function getListAjax() {
 	var iboard = cmtListElem.dataset.iboard;
-	
-	fetch('cmtInsSel?iboard=' + iboard)
+	console.log(iboard);
+	fetch('cmtSel?iboard=' + iboard)
 	.then(function(res) {
 		return res.json();
 	})
 	.then(function(myJson) {
 		console.log(myJson);
-		
 		makeCmtElemList(myJson);
 	});
 }
@@ -86,9 +87,9 @@ function makeCmtElemList(data) {
 		var tdElem3 = document.createElement('td');
 		var tdElem4 = document.createElement('td');
 		
-		tdElem1.append(item.cmt);
+		tdElem1.append(item.ctnt);
 		tdElem2.append(item.writerNm);
-		tdElem3.append(item.regdate);
+		tdElem3.append(item.regdt);
 		
 		if(parseInt(loginUserPk) === item.iuser) {
 			var delBtn = document.createElement('button');
@@ -97,7 +98,7 @@ function makeCmtElemList(data) {
 			//삭제버튼 클릭시
 			delBtn.addEventListener('click', function() {
 				if(confirm('삭제하시겠습니까?')) {					
-					delAjax(item.icmt);
+					delAjax(item.ict);
 				}
 			});
 			
@@ -123,8 +124,8 @@ function makeCmtElemList(data) {
 	});	
 }
 
-function delAjax(icmt) {
-	fetch('cmtDelUpd?icmt=' + icmt)
+function delAjax(ict) {
+	fetch('cmtDelUpd?ict=' + ict)
 	.then(function(res) {
 		return res.json();
 	})
@@ -145,8 +146,8 @@ function delAjax(icmt) {
 function modAjax() {
 	var cmtModFrmElem = document.querySelector('#cmtModFrm');
 	var param = {
-		icmt: cmtModFrmElem.icmt.value,
-		cmt: cmtModFrmElem.cmt.value
+		ict: cmtModFrmElem.icmt.value,
+		ctnt: cmtModFrmElem.cmt.value
 	}
 	
 	const init = {
@@ -171,12 +172,12 @@ function modAjax() {
 	});
 }
 
-function openModModal({icmt, cmt}) {	
+function openModModal({ict, ctnt}) {
 	cmtModModalElem.className = '';
 	
 	var cmtModFrmElem = document.querySelector('#cmtModFrm');
-	cmtModFrmElem.icmt.value = icmt;
-	cmtModFrmElem.cmt.value = cmt;
+	cmtModFrmElem.icmt.value = ict;
+	cmtModFrmElem.cmt.value = ctnt;
 }
 
 function closeModModal() {
