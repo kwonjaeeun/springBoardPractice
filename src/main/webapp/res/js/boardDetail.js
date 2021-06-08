@@ -20,10 +20,9 @@ function regAjax(param) {
 			'accept' : 'application/json',
 			'content-type' : 'application/json;charset=UTF-8'
 		}
-
 	};
 	
-	fetch('cmtIns', init)
+	fetch('cmt/', init)
 	.then(function(res) {
 		return res.json();
 	})
@@ -44,7 +43,7 @@ function regAjax(param) {
 function getListAjax() {
 	var iboard = cmtListElem.dataset.iboard;
 	console.log(iboard);
-	fetch('cmtSel?iboard=' + iboard)
+	fetch('cmt/' + iboard)
 	.then(function(res) {
 		return res.json();
 	})
@@ -125,7 +124,7 @@ function makeCmtElemList(data) {
 }
 
 function delAjax(ict) {
-	fetch('cmtDelUpd?ict=' + ict)
+	fetch('cmt/' + ict,{method:'delete'})
 	.then(function(res) {
 		return res.json();
 	})
@@ -151,11 +150,15 @@ function modAjax() {
 	}
 	
 	const init = {
-		method: 'POST',				
-	    body: new URLSearchParams(param)
+		method: 'PUT',
+		body: JSON.stringify(param),
+		headers:{
+			'accept' : 'application/json',
+			'content-type' : 'application/json;charset=UTF-8'
+		}
 	};
 	
-	fetch('cmtDelUpd', init)
+	fetch('cmt/', init)
 	.then(function(res) {
 		return res.json();
 	})

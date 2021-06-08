@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller//주소값과 매핑이 되는 빈등록(servlet과 연결)
 @RequestMapping("/user")//class위에 1차주소값
@@ -42,5 +43,13 @@ public class UserController {
         System.out.println("param"+param);
 
         return "redirect:/user/login";
+    }
+    @RequestMapping("/profile")
+    public String profile(){
+        return "user/mypage";
+    }
+    @RequestMapping(value="/profile",method = RequestMethod.POST)
+    public String profile(MultipartFile profileImg){
+        return "redirect:"+service.uploadProfile(profileImg);
     }
 }

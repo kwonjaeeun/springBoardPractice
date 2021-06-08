@@ -13,6 +13,7 @@
 <body>
 <div><a href="#" onclick="goBack();">돌아가기</a></div>
 <h1>${requestScope.data.title}</h1>
+
 <div>글번호 : ${requestScope.data.iboard}</div>
 <div>작성자 : <c:out value="${requestScope.data.writerNm}"/> | 작성일 : ${requestScope.data.regdt}</div>
 <div><c:out value="${requestScope.data.ctnt}"/></div>

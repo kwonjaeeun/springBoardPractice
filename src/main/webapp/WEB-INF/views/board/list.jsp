@@ -9,7 +9,7 @@
     <script defer src="/res/js/boardList.js"></script>
 </head>
 <body>
-<h1>리스트</h1>
+<h1><a href="/user/profile">리스트</a></h1>
 <div>${sessionScope.loginUser.unm}</div>
 <table>
     <tr>

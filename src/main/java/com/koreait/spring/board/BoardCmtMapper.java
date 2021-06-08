@@ -8,4 +8,6 @@ import java.util.List;
 public interface BoardCmtMapper {
    int insBoardCmt(BoardCmtEntity param);
    List<BoardCmtDomain> selBoardCmtList(int iboard);
+   int delBoardCmt(BoardCmtEntity param);
+   int modBoardCmt(BoardCmtEntity param);
 }

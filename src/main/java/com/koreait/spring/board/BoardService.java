@@ -28,10 +28,25 @@ public class BoardService {
     public int InsBoardCmt(BoardCmtEntity param){
         UserEntity user =(UserEntity) session.getAttribute("loginUser");
         param.setIuser(user.getIuser());
+        System.out.println("111");
         return CmtMapper.insBoardCmt(param);
     }
 
     public List<BoardCmtDomain> SelBoardCmtList(int iboard) {
         return CmtMapper.selBoardCmtList(iboard);
+    }
+
+    public int DelBoardCmt(int ict) {
+        BoardCmtEntity param= new BoardCmtEntity();
+        param.setIct(ict);
+        UserEntity user =(UserEntity) session.getAttribute("loginUser");
+        param.setIuser(user.getIuser());
+        return CmtMapper.delBoardCmt(param);
+    }
+
+    public int ModBoardCmt(BoardCmtEntity param) {
+        UserEntity user =(UserEntity) session.getAttribute("loginUser");
+        param.setIuser(user.getIuser());
+        return CmtMapper.modBoardCmt(param);
     }
 }

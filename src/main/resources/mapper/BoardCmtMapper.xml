@@ -13,4 +13,14 @@
         FROM comment_table A INNER JOIN t_user B ON A.iuser = B.iuser
         WHERE A.iboard = #{iboard} ORDER BY A.ict desc
     </select>
+
+    <delete id="delBoardCmt">
+        delete from comment_table
+        where iuser=#{iuser} and ict=#{ict}
+    </delete>
+
+    <update id="modBoardCmt">
+        Update comment_table set ctnt=#{ctnt}
+        where iuser=#{iuser} and ict=#{ict}
+    </update>
 </mapper>
