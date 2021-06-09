@@ -1,17 +1,11 @@
 package com.koreait.spring.board;
 
-import com.mysql.cj.Session;
-import com.sun.corba.se.spi.presentation.rmi.StubAdapter;
+import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +16,7 @@ public class BoardController {
     @Autowired
     private BoardService service;
 
-    @RequestMapping("list")
+    @RequestMapping("/list")
     public String list(@RequestParam(value = "searchType",defaultValue ="0")int searchType,
                        @RequestParam(value = "searchText",required = false)String searchText,
                        Model model){
@@ -32,7 +26,19 @@ public class BoardController {
         return "board/list";
     }
 
-    @RequestMapping("detail")
+
+    @GetMapping("/writeMod")
+    public void writeMod(){}
+
+    @PostMapping(value = "/writeMod")
+    public String writeBoard(BoardEntity param){
+        System.out.println(param);
+        int iboard =service.writeMod(param);
+        return "redirect:detail?iboard="+iboard;
+    }
+
+
+    @RequestMapping("/detail")
     public String detail(BoardEntity param,Model model){
         model.addAttribute("data",service.selBoard(param));
         return "board/detail";

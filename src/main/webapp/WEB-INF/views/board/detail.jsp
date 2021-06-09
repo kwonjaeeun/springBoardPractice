@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <title>List</title>
     <link rel="stylesheet" href="/res/css/common.css">
-    <link rel="stylesheet" href="/res/css/boardList.css">
-    <script defer src="/res/js/boardDetail.js"></script>
-    <link rel="stylesheet" href="/res/css/boardDetail.css">
+    <link rel="stylesheet" href="/res/css/board/list.css">
+    <script defer src="/res/js/board/detail.js"></script>
+    <link rel="stylesheet" href="/res/css/board/detail.css">
 </head>
 <body>
 <div><a href="#" onclick="goBack();">돌아가기</a></div>
@@ -38,6 +38,6 @@
     </div>
 </div>
 
-<script src="/res/js/boardDetail.js"></script>
+<script src="/res/js/board/detail.js"></script>
 </body>
 </html>

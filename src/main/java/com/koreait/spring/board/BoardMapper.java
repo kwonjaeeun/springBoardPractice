@@ -8,4 +8,6 @@ import java.util.List;
 public interface BoardMapper {
     List<BoardDomain> selBoardList();
     BoardDomain selBoard(BoardEntity param);
+    int writeBoard(BoardEntity param);
+    int modBoard(BoardEntity param);
 }

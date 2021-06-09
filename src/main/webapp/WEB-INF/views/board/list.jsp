@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>List</title>
     <link rel="stylesheet" href="/res/css/common.css">
-    <link rel="stylesheet" href="/res/css/boardList.css">
-    <script defer src="/res/js/boardList.js"></script>
+    <link rel="stylesheet" href="/res/css/board/list.css">
+    <script defer src="/res/js/board/list.js"></script>
 </head>
 <body>
 <h1><a href="/user/profile">리스트</a></h1>
@@ -37,7 +37,7 @@
                     <c:set var="img" value="/res/img/noprofile.jpg"/>
                 </c:when>
                 <c:otherwise>
-                    <c:set var="img" value="/res/img/user/${item.iuser}/${item.profileImg}"/>
+                    <c:set var="img" value="/img/${item.iuser}/${item.profileImg}"/>
                 </c:otherwise>
             </c:choose>
                 <img src="${img}" class="profileImg">

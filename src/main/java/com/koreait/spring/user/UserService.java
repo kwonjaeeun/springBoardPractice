@@ -51,6 +51,10 @@ public class UserService {
         File target=new File(PATH+"/"+fileNm);
         try {
             img.transferTo(target);
+            File delFile =new File(PATH+"/"+loginUser.getProfileImg());
+            if(delFile.exists()){
+                delFile.delete();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

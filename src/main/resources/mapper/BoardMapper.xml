@@ -3,6 +3,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.koreait.spring.board.BoardMapper">
+    <insert id="writeBoard">
+        insert into t_board
+        ( title , ctnt , iuser)
+        values
+        (#{title},#{ctnt},#{iuser})
+
+    </insert>
+    <update id="modBoard">
+        update t_board
+        set title=#{title}, ctnt=#{ctnt}
+        where iboard=#{iboard} and iuser=#{iuser}
+    </update>
+
     <select id="selBoardList" resultType="BoardDomain">
         SELECT A.iboard, A.title, B.unm as writerNm, A.regdt, A.iuser , B.profileImg as profileImg
         from t_board A inner join t_user B on A.iuser = B.iuser
