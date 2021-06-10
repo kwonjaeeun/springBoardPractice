@@ -10,4 +10,5 @@ public interface BoardMapper {
     BoardDomain selBoard(BoardEntity param);
     int writeBoard(BoardEntity param);
     int modBoard(BoardEntity param);
+    int delBoard(BoardEntity param);
 }

@@ -3,19 +3,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.koreait.spring.board.BoardMapper">
-    <insert id="writeBoard">
+    <insert id="writeBoard" useGeneratedKeys="true" keyProperty="iboard">
         insert into t_board
         ( title , ctnt , iuser)
         values
         (#{title},#{ctnt},#{iuser})
 
     </insert>
-    <update id="modBoard">
+    <update id="modBoard" useGeneratedKeys="true" keyProperty="iboard">
         update t_board
         set title=#{title}, ctnt=#{ctnt}
         where iboard=#{iboard} and iuser=#{iuser}
     </update>
-
+    <delete id="delBoard">
+        delete  from t_board
+        where iboard=#{iboard} and iuser=#{iuser}
+    </delete>
     <select id="selBoardList" resultType="BoardDomain">
         SELECT A.iboard, A.title, B.unm as writerNm, A.regdt, A.iuser , B.profileImg as profileImg
         from t_board A inner join t_user B on A.iuser = B.iuser
@@ -23,7 +26,7 @@
     </select>
 
     <select id="selBoard" resultType="BoardDomain">
-        SELECT  B.unm as writerNm, A.iuser , A.regdt , A.title ,A.ctnt, A.iboard
+        SELECT  B.unm as writerNm, A.iuser , A.regdt , A.title ,A.ctnt, A.iboard , count(C.iuser) as fav
         from t_board A inner join t_user B on A.iuser=B.iuser
         where A.iboard=#{iboard}
     </select>

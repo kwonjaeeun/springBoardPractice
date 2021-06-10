@@ -1,19 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>List</title>
-    <link rel="stylesheet" href="/res/css/common.css">
-    <link rel="stylesheet" href="/res/css/board/list.css">
-    <script defer src="/res/js/board/detail.js"></script>
-    <link rel="stylesheet" href="/res/css/board/detail.css">
-</head>
-<body>
-<div><a href="#" onclick="goBack();">돌아가기</a></div>
-<h1>${requestScope.data.title}</h1>
 
+<div><a href="#" onclick="goBack();">돌아가기</a></div>
+<div>
+    <a href="/board/writeMod?iboard=${requestScope.data.iboard}">수정</a>
+    <a href="/board/delBoard?iboard=${requestScope.data.iboard}">삭제</a>
+</div>
+<h1>${requestScope.data.title}</h1>
+<div><button onclick="fav()">하트모양넣었다고 생각하고~</button></div>
+<div id="fav" data-fav="${0}">...</div>
 <div>글번호 : ${requestScope.data.iboard}</div>
 <div>작성자 : <c:out value="${requestScope.data.writerNm}"/> | 작성일 : ${requestScope.data.regdt}</div>
 <div><c:out value="${requestScope.data.ctnt}"/></div>
@@ -39,5 +35,3 @@
 </div>
 
 <script src="/res/js/board/detail.js"></script>
-</body>
-</html>

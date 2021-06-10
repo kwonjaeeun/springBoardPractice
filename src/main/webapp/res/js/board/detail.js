@@ -187,6 +187,31 @@ function closeModModal() {
 	cmtModModalElem.className = 'displayNone';
 }
 
+function fav(){
+	const init={
+		method: 'PUT'
+		};
+	if(document.querySelector("#fav").dataset.fav==0){
+		init.method="POST"
+	}else{
+		init.method="DELETE"
+	}
+	fetch("fav?iboard="+cmtListElem.dataset.iboard,init)
+	.then(function(res){
+		return res.json();
+	})
+	.then(function (myJson){
+		switch(myJson.result){
+			case 0:
+				document.querySelector("#fav").innerText="...";
+				break
+			case 1:
+				document.querySelector("#fav").innerText="good";
+				break;
+
+		}
+	})
+}
 getListAjax(); //이 파일이 임포트되면 함수 1회 호출!
 
 

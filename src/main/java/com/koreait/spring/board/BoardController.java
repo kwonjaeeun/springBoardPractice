@@ -1,6 +1,6 @@
 package com.koreait.spring.board;
 
-import lombok.Value;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,15 +28,26 @@ public class BoardController {
 
 
     @GetMapping("/writeMod")
-    public void writeMod(){}
-
-    @PostMapping(value = "/writeMod")
-    public String writeBoard(BoardEntity param){
-        System.out.println(param);
+    public void writeMod(@RequestParam(value = "iboard",required = false)int iboard, Model model){
+        BoardEntity param=new BoardEntity();
+        if(iboard!=0){
+            param.setIboard(iboard);
+            model.addAttribute("data",service.selBoard(param));
+        }else{
+            param.setIboard(0);
+            model.addAttribute("data",param);
+        }
+    }
+    @PostMapping("/writeMod")
+    public String writeMod(BoardEntity param){
         int iboard =service.writeMod(param);
         return "redirect:detail?iboard="+iboard;
     }
-
+    @RequestMapping("/delBoard")
+    public String delBoard(@RequestParam("iboard")int iboard){
+        service.delBoard(iboard);
+        return "redirect:list";
+    }
 
     @RequestMapping("/detail")
     public String detail(BoardEntity param,Model model){

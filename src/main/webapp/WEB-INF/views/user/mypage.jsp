@@ -1,17 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2021-06-08
-  Time: 오후 2:42
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+
 <c:choose>
     <c:when test="${empty sessionScope.loginUser.profileImg}">
         <c:set var="img" value="/res/img/noprofile.jpg"/>
@@ -32,6 +21,3 @@
     <div>ID : ${sessionScope.loginUser.uid}</div>
     <div>Name : ${sessionScope.loginUser.unm}</div>
 </div>
-
-</body>
-</html>

@@ -11,7 +11,7 @@
   <script defer src="/res/js/<tiles:getAsString name="res"/>.js"></script>
   </head>
 <body>
-  <div id=" container">
+  <div id="container">
     <tiles:insertAttribute name="header"/>
     <section>
       <tiles:insertAttribute name="content"/>

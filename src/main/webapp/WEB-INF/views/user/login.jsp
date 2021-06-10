@@ -1,10 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-    <title>로그인</title>
-</head>
-<body>
-    <h1>로그인</h1>
     <form action="login" method="post">
         <div>
             Id:<input type="text" name="uid">
@@ -22,5 +16,3 @@
     <div>
         <a href="join" style="text-decoration: none">SIGNIN</a>
     </div>
-</body>
-</html>
